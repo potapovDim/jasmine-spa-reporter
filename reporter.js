@@ -8,7 +8,7 @@ const {
 const {Step} = require('./step')
 
 function Spa() {
-    this.dirName = `Date=${new Date().toLocaleDateString()}-Time=${new Date().getHours()}-${new Date().getMinutes()}`
+    this.dirName = `Date-${new Date().toLocaleDateString()}@Time-${new Date().getHours()}-${new Date().getMinutes()}`
     this.opts = {}
     this.suits = []
     this.currentSuit = null
