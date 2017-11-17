@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "jasmine": "^2.8.0"
+  },
+  "dependencies": {
+    "spa-base": "git+ssh://git@github.com:potapovDim/spa-base.git#master"
   }
 }

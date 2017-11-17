@@ -1,6 +1,4 @@
-const Spa = require('./reporter').Spa
-const Suit = require('./suit').Suit
-const Test = require('./test').Test
+const { Spa, Suit, Test, Hook } = require('spa-base')
 
 const spaReporter = new Spa()
 
@@ -8,6 +6,12 @@ global.spaReporter = spaReporter.buidPublickApi()
 
 const myReporter = {
     jasmineStarted: function (suiteInfo) {
+    },
+    _getTestcaseStatus: function (status) {
+        console.log(status)
+    },
+    _getTestcaseError: function (error) {
+        console.log(error)
     },
     suiteStarted: function (result) {
         spaReporter.runSuit(new Suit(result.description))
@@ -18,13 +22,17 @@ const myReporter = {
         }
     },
     specDone: function (result) {
-        spaReporter.getCurrentSuit().endTest()
+        const date = {
+            state: result.pending ? 'pending' : result.status,
+            speed: 'fast'
+        }
+        spaReporter.getCurrentSuit().endTest(date)
     },
     suiteDone: function (result) {
         spaReporter.endSuit()
     },
-    jasmineDone: function () {
-        spaReporter.createReport()
+    jasmineDone: function (stats) {
+        spaReporter.createReport(stats)
     }
 }
 

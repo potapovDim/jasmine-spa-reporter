@@ -3,7 +3,6 @@
   "spec_files": [
     "./specs/**/*.js"
   ],
-  "reporter": "./reporter",
   "stopSpecOnExpectationFailure": false,
   "random": false
 }
